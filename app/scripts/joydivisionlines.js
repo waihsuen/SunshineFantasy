@@ -144,8 +144,26 @@ function startAnimation() {
         y: 0,
         z: 0
     }, 2000).delay(3400).start().onComplete(function () {
-        setTimeout(loadImageAndReadyScene, 3000);
+        //
+        
+        new TWEEN.Tween(_lineHolder.rotation).to({
+        x: Math.PI/2,
+        y: 0,
+        z: Math.PI/2
+        }, 2000).delay(400).start().onComplete(function () {
+            setTimeout(loadImageAndReadyScene, 3000);
+        });
+        
+        new TWEEN.Tween(camera.position).to({
+            x: 0,
+            y: 0,
+            z: 0
+        }, 5000).delay(400).start();
+        
+        
     });
+    
+    
 }
 
 function loadImageAndReadyScene() {
