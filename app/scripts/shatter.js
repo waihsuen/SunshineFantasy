@@ -11,7 +11,7 @@ var WIDTH = window.innerWidth,
 
 function init() {
 
-    camera = new THREE.PerspectiveCamera(40, WIDTH / HEIGHT, 1, 2000);
+    camera = new THREE.PerspectiveCamera(65, WIDTH / HEIGHT, 1, 2000);
     camera.updateProjectionMatrix();
     camera.position.set(-100, 40, 240);
 
