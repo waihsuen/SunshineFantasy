@@ -30,6 +30,57 @@
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <div id="backgroundColor"></div>
+    <canvas id="seismograph" width="400" height="150"></canvas>
+    <div id="startBtn">
+        <div class="instruct">Enable mic <br>
+        and go as high as possible to break the words.</div>
+    </div>
+    
+    <div id="threejs"></div>
+    
+    <script type="x-shader/x-vertex" id="vertexshader">
+
+			uniform float amplitude;
+
+			attribute vec3 customColor;
+			attribute vec3 displacement;
+
+			varying vec3 vNormal;
+			varying vec3 vColor;
+
+			void main() {
+
+				vNormal = normal;
+				vColor = customColor;
+
+				vec3 newPosition = position + normal * amplitude * displacement;
+				gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
+
+			}
+		</script>
+
+		<script type="x-shader/x-fragment" id="fragmentshader">
+
+			varying vec3 vNormal;
+			varying vec3 vColor;
+
+			void main() {
+
+				const float ambient = 0.4;
+
+				vec3 light = vec3( 1.0 );
+				light = normalize( light );
+
+				float directional = max( dot( vNormal, light ), 0.0 );
+
+				gl_FragColor = vec4( ( directional + ambient ) * vColor, 1.0 );
+
+			}
+
+		</script>
+
+    
     
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -37,24 +88,30 @@
     <!-- endbower -->
     <!-- endbuild -->
     
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+<!--    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>-->
     
     <script src="//cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
 <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r37/Three.js"></script>-->
     
-    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
+    <!-- CONTROLS -->
+<!--    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>-->
+    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/TrackballControls.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>
     <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/libs/stats.min.js"></script>
     
     <!-- TYPEFACE IS SHIFTED OUT -->
-<!--
     <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/geometries/TextGeometry.js"></script>
     <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/utils/FontUtils.js"></script>
+    
     <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/fonts/helvetiker_regular.typeface.js"></script>
--->
+    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/fonts/helvetiker_bold.typeface.js"></script>
 
+    
     <!-- POINTER CONTROLS -->
+    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/modifiers/ExplodeModifier.js"></script>
+    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/modifiers/TessellateModifier.js"></script>
 
+    <!-- ADDONS -->
     <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/Detector.js"></script>
 <!--    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/PointerLockControls.js"></script>
     <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/TrackballControls.js"></script>
@@ -78,8 +135,15 @@
 <!--    <script id="worker1" src="scripts/worker1.js"></script>-->
     
     <!-- build:js scripts/main.js -->
-    <script src="scripts/joydivisionlines.js"></script>
+    <script src="scripts/ftt/complex.js"></script>
+    <script src="scripts/ftt/real.js"></script>
+    
+    <script src="scripts/sound/PitchAnalyzer.js"></script>
+    <script src="scripts/sound/MicInput.js"></script>
+    <script src="scripts/sound/Seismograph.js"></script>
+    
     <script src="scripts/main.js"></script>
+    <script src="scripts/shatter.js"></script>
     <!-- endbuild -->
 </body>
 
