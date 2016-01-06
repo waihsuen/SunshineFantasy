@@ -24,7 +24,7 @@ var _lineGroup,
     _stageWidth,
     _stageHeight;
 
-var imageArray = ['images/a.jpg', 'images/b.jpg', 'images/c.jpg', 'images/d.jpg', 'images/e.jpg', 'images/f.jpg', 'images/g.jpg'],
+var imageArray = ['images/a.jpg', 'images/b.jpg', 'images/c.jpg', 'images/d.jpg', 'images/e.jpg', 'images/f.jpg'],
     imageCounter = 0;
 
 
