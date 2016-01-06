@@ -46,7 +46,7 @@ $(document).ready(function () {
     });
 
     scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 3000);
     renderer = new THREE.WebGLRenderer({
         antialias: true
     });
@@ -98,7 +98,7 @@ function createLines() {
     });
 
     var steps = 6,
-        depth = 80;
+        depth = 60;
 
     for (y = 0; y < _imageHeight; y += steps) {
         var geometry = new THREE.Geometry();
@@ -136,7 +136,7 @@ function startAnimation() {
     new TWEEN.Tween(camera.position).to({
         x: 10,
         y: 10,
-        z: 1000
+        z: 1400
     }, 5000).start();
 
     new TWEEN.Tween(_lineHolder.rotation).to({
@@ -159,6 +159,10 @@ function loadImageAndReadyScene() {
         _canvas.width = _imageWidth
         _canvas.height = _imageHeight;
 
+//        var scaleWidth = (_imageWidth > window.innerWidth) ? _imageWidth/window.innerWidth : window.innerWidth/_imageWidth;
+//        
+//        console.log(scaleWidth);
+//        context.scale(scaleWidth, scaleWidth);
         context.drawImage(_inputImage, 0, 0);
         _pixels = context.getImageData(0, 0, _imageWidth, _imageHeight).data;
         createLines();
