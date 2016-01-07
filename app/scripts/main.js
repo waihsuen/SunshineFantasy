@@ -1,4 +1,3 @@
-
 var audioContext = new AudioContext(),
     time = new Date().getTime(),
     intervalID = 0,
