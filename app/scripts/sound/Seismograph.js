@@ -54,7 +54,14 @@ var seismograph = {
     // ==========================================================================================
 
     fireEvery500ms: function () {
-
+        
+        $('#pitchLevel').clearQueue().animate({
+            height: (((heightTotal/heightCounter) / maxPitchToShatter) * 100) + '%'
+          }, 300);
+        
+        heightCounter = 1;
+        heightTotal = 1;
+        
         // ================================ CREATE BLOCKLINE ON 500ms
         var needlePos = {
             x: 0,

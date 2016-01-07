@@ -2,7 +2,10 @@
 
 var shakeLevel = '',
     shattervalue = 0,
-    hasExploded = false;
+    hasExploded = false,
+    heightCounter = 0,
+    heightTotal = 0,
+    maxPitchToShatter = 580;
 
 var micInput = {
     microphone_stream: null,
@@ -70,9 +73,17 @@ var micInput = {
                 if (tone) {
                     toneFreqRounded = Math.round(tone.freq);
                     _this.freqCallback(toneFreqRounded, _this.freqCallbackID);
+                    
+                    heightCounter++;
+                    heightTotal += toneFreqRounded;
+                    
                     //console.log(toneFreqRounded);
-                    if (toneFreqRounded <= 580 && !hasExploded) {
-                        console.log(Math.round(Math.random()*(toneFreqRounded%255)));
+                    if (toneFreqRounded <= maxPitchToShatter && !hasExploded) {
+                        //console.log(Math.round(Math.random()*(toneFreqRounded%255)));
+                        //console.log(toneFreqRounded);
+                        //
+                        
+                        //
                         $('#backgroundColor')
                             .css('background-color', 'rgb('+
                                  Math.round(Math.random()*(toneFreqRounded%255)) + ','+
@@ -99,7 +110,10 @@ var micInput = {
                         toneFreqRounded = 0;
                         shattervalue = 0;
                         shakeLevel = '';
-                        $('#backgroundColor').css('background-color', 'black');
+                        //heightCounter = 1;
+                        //heightTotal = 1;
+                        
+                        $('#backgroundColor').css('background-color', 'ghostwhite');
                     }
                     
                 }

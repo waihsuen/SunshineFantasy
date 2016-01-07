@@ -4,14 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width">
     <title>Noel: Pitch</title>
-
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic' rel='stylesheet' type='text/css'>
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
-
+    
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
@@ -28,10 +28,12 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div id="backgroundColor"></div>
+    <div id="pitchLevel"></div>
     <canvas id="seismograph" width="400" height="150"></canvas>
     <div id="startBtn">
-        <div class="instruct">Enable mic <br>
-        and go as high as possible to break the words.</div>
+        <div class="instruct">Tap here to enable mic <br>
+        and scream as high as possible
+            to break the text.</div>
     </div>
     
     <div id="threejs"></div>
@@ -91,10 +93,12 @@
 <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r37/Three.js"></script>-->
     
     <!-- CONTROLS -->
-<!--    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>-->
+    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
+<!--
     <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/TrackballControls.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>
     <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/libs/stats.min.js"></script>
+-->
     
     <!-- TYPEFACE IS SHIFTED OUT -->
     <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/geometries/TextGeometry.js"></script>

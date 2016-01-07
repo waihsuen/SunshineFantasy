@@ -15,7 +15,9 @@ function init() {
     camera.updateProjectionMatrix();
     camera.position.set(-100, 40, 240);
 
-    controls = new THREE.TrackballControls(camera);
+    //controls = new THREE.OrbitControls(camera);
+    controls = new THREE.OrbitControls( camera );
+    controls.addEventListener( 'change', render );
 
     scene = new THREE.Scene();
 
@@ -51,7 +53,8 @@ function init() {
     var colors = new Float32Array(numFaces * 3 * 3);
     var displacement = new Float32Array(numFaces * 3 * 3);
 
-    var color = new THREE.Color();
+    //var color = new THREE.Color();
+    var color = new THREE.Color('rgb(245, 255, 11)');
 
     for (var f = 0; f < numFaces; f++) {
 
@@ -61,7 +64,8 @@ function init() {
         var s = 1.0; //0.5 + 0.5 * Math.random();
         var l = 1.0; //0.5 + 0.5 * Math.random();
 
-        color.setHSL(h, s, l);
+        //color.setHSL(h, s, l);
+        
 
         var d = 10 * (0.5 - Math.random());
 
@@ -153,7 +157,7 @@ function render() {
         }
     }
     
-    controls.update();
+    //controls.update();
     renderer.render(scene, camera);
 }
 
@@ -162,26 +166,38 @@ function shake(power) {
     var time = Date.now() * 0.001;
     var sX = 0, 
         sY = 0, 
-        sZ = 0;
+        sZ = 0,
+        vX = 0, 
+        vY = 0,
+        vZ = 0;
     
     switch(power) {
         case 'small' :
-            sX = 1;
-            sY = 2; 
-            sZ = 2;
+            sX = 10;
+            sY = 30; 
+            sZ = 30;
+            vX = 5;
+            vY = 5;
+            vZ = 5;
             break;
         case 'mid' :
-            sX = 10;
-            sY = 10; 
-            sZ = 10;
+            sX = 20;
+            sY = 50; 
+            sZ = 50;
+            vX = 8;
+            vY = 8;
+            vZ = 12;
             break;
         case 'big' :
-            sX = 30;
-            sY = 100; 
-            sZ = 80;
+            sX = 50;
+            sY = 80; 
+            sZ = 70;
+            vX = 20;
+            vY = 20;
+            vZ = 16;
             break;
     }
-    camera.position.x = -100.0 + (Math.sin(time * sX)*6);
-    camera.position.y = 40.0 + (Math.sin(time * sY)*20);
-    camera.position.z = 240.0 + (Math.sin(time * sZ)*20);
+    mesh.position.x = 0.0 + (Math.sin(time * sX)*vX);
+    mesh.position.y = 0.0 + (Math.sin(time * sY)*vY);
+    mesh.position.z = 0.0 + (Math.sin(time * sZ)*vZ);
 }
