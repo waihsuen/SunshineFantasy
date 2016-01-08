@@ -5,10 +5,7 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>sunshinefantasy</title>
-
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
+    <title>Box</title>
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
@@ -22,10 +19,6 @@
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="/bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
-    
-<!--    <script src="/bower_components/tone/build/Tone.js"></script>-->
-    
-    
 </head>
 
 <body>
@@ -33,19 +26,6 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     
-<!--    <div id ="webGL-container"></div>-->
-    
-<!--
-    <div id="blocker">
-
-			<div id="instructions">
-				<span style="font-size:40px">Click to play</span>
-				<br />
-				(W, A, S, D = Move, SPACE = Jump, MOUSE = Look around)
-			</div>
-
-		</div>
--->
     
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -54,9 +34,6 @@
     <!-- endbuild -->
     
     <script src="//cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
-    
-    
-    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>
     <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/libs/stats.min.js"></script>
     
@@ -64,28 +41,20 @@
     <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/geometries/TextGeometry.js"></script>
     <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/utils/FontUtils.js"></script>
     <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/fonts/helvetiker_regular.typeface.js"></script>
+    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/fonts/helvetiker_bold.typeface.js"></script>
 
+
+    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/utils/GeometryUtils.js"></script>
+    
     <!-- POINTER CONTROLS -->
-    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/PointerLockControls.js"></script>
+<!--    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/PointerLockControls.js"></script>-->
+    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
     <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/TrackballControls.js"></script>
+<!--    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/FirstPersonControls.js"></script>-->
     
-    
-    <!-- build:js scripts/plugins.js -->
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
-    <!-- endbuild -->
-
-    <script id="worker1" src="scripts/worker1.js"></script>
+    <script src="scripts/FBOUtils.js"></script>
+    <script src="scripts/ShaderLoader.js"></script>
+    <script src="scripts/PhysicsRenderer.js"></script>
     <!-- build:js scripts/main.js -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
