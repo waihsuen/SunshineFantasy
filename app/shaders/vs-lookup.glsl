@@ -6,6 +6,7 @@ void main(){
 
   vec3 dif = cameraPosition - pos.xyz;
   
+  // EDIT PARTICLE SIZE
   gl_PointSize = min( 1. ,  200. / length( dif ));
   gl_Position = projectionMatrix * modelViewMatrix * vec4( pos.xyz , 1. );
 }
