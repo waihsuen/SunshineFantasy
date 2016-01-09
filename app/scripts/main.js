@@ -37,7 +37,7 @@ var renderUniforms = {
 
 
 
-var shaders = new ShaderLoader('../shaders');
+var shaders = new ShaderLoader('./shaders');
 
 shaders.load('ss-collisions', 'sim', 'simulation');
 shaders.load('vs-lookup', 'lookup', 'vertex');
